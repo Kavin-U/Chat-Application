@@ -4,16 +4,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-
-const PORT  = 5000;
+const PORT = 5000;
 const app = express();
 
-
-
-mongoose.connect(process.env.MONGOString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect(process.env.MONGOString)
     .then(() => console.log("Connected to MongoDB successfully!"))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
   
