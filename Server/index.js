@@ -1,8 +1,23 @@
 import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
+dotenv.config();
+
+
+const PORT  = 5000;
 const app = express();
 
 
-app.listen(3000 , ()=>{
-    console.log('Server running on port 3000!');
+
+mongoose.connect(process.env.MONGOString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then(() => console.log("Connected to MongoDB successfully!"))
+    .catch((err) => console.error("Error connecting to MongoDB:", err));
+  
+
+app.listen(PORT, ()=>{
+    console.log(`Server running on ${PORT}`);
 })
