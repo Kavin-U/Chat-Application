@@ -17,7 +17,7 @@ app.listen(PORT, ()=>{
     console.log(`Server running on ${PORT}`);
 })
 
-mongoose.connect("mongodb+srv://ukavin7:kavinDAE%40123@chat-project-cluster.8cmdj.mongodb.net/?retryWrites=true&w=majority&appName=Chat-Project-cluster")
+mongoose.connect(process.env.MONGOString)
     .then(() => console.log("Connected to MongoDB successfully!"))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
     
