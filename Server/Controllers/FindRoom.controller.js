@@ -5,8 +5,7 @@ const findRoom = async(req,res)=>{
     const Findrooms = await Room.find();
 
     try{
-        if(Findrooms){
-            // console.log(Findrooms);
+        if(Findrooms){            
             res.json({rooms : Findrooms});
         }
     }
