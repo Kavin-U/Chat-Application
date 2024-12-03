@@ -1,11 +1,9 @@
-import mongoose from "mongoose";
 import Rooms from "../Models/Room.model.js";
 
-
-
 const findActiveRoom = async (req, res) => {
-    console.log(req.body.RoomName);
-    const currentroom = await Rooms.findOne(req.body);
+    const {RoomID} = req.body;
+    console.log(RoomID);
+    const currentroom = await Rooms.findById(RoomID);
     try {
         if (currentroom) {
             console.log(currentroom);
