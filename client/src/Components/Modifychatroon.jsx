@@ -18,7 +18,7 @@ export default function ModifyChatRoom() {
         console.log("Body Payload:", bodyPayload);
 
         const response = await fetch(
-          "http://localhost:5000/room/findactiveroom",
+          "/server/room/findactiveroom",
           {
             method: "POST",
             headers: {

@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ConfirmDelete({ Delete, deleteId }) {
   const { setDelete } = Delete;
   const { Current } = deleteId;
-  
+  const navigate = useNavigate();
+
     const deleteRoom = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/room/deleteroom/${Current}`,
+          `/server/room/deleteroom/${Current}`,
           { method: "DELETE" }
         );
         if(!response.ok){
             console.log("Not deleted");
         }
         setdel(false);
+        navigate("/");
+
       } catch (err) {
             console.log(err)
       }

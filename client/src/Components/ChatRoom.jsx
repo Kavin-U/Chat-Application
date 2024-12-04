@@ -13,7 +13,7 @@ function ChatRoom() {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await fetch("http://localhost:5000/room/findrooms");
+        const response = await fetch("/server/room/findrooms");
         if (response.ok) {
           const data = await response.json();
           setRooms(data.rooms);
@@ -56,13 +56,13 @@ function ChatRoom() {
           <div className="h-[80%] scrollbar-hide overflow-auto">
             <div className="text-white text-center p-4 uppercase bg-teal-950" >ChatRooms</div>
           {Rooms.map((room, index) => {              
-              const isActive = location.pathname === `/rooms/${room.Name}`;
+              const isActive = location.pathname === `/rooms/${[room.Name +','+ room._id]}`;
               return (
                 <Link
                   key={index}
                   to={`rooms/${[room.Name +','+ room._id]}`}
                   className={`block text-white ${
-                    isActive ? "bg-teal-700" : ""
+                    isActive ? "bg-teal-400 text-black" : ""
                   }`}
                 >
                   <div className="py-4 px-4 hover:bg-teal-700 cursor-pointer capitalize">

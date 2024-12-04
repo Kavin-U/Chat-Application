@@ -21,5 +21,5 @@ mongoose.connect(process.env.MONGOString)
     .then(() => console.log("Connected to MongoDB successfully!"))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
     
-app.use("/room",RoomRouter);
-app.use("/user",CreateUser);
+app.use("/server/room",RoomRouter);
+app.use("/server/user",CreateUser);
