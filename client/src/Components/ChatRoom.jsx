@@ -52,8 +52,9 @@ function ChatRoom() {
   return (
     <div className="w-[100%] h-[91.4vh] 2xl:h-[94.4vh] bg-teal-800 flex items-center">
       <div className="w-[95%] h-[89%] bg-teal-900 flex mx-auto">
-        <div className="bg-teal-600 w-fit h-full flex justify-between flex-col">
+        <div className="bg-teal-600 w-fit h-full border-r-2 border-gray-400 flex justify-between flex-col">
           <div className="h-[80%] scrollbar-hide overflow-auto">
+            <div className="text-white text-center p-4 uppercase bg-teal-950" >ChatRooms</div>
           {Rooms.map((room, index) => {              
               const isActive = location.pathname === `/rooms/${room.Name}`;
               return (
@@ -64,7 +65,7 @@ function ChatRoom() {
                     isActive ? "bg-teal-700" : ""
                   }`}
                 >
-                  <div className="py-4 hover:bg-teal-700 text-center cursor-pointer capitalize">
+                  <div className="py-4 px-4 hover:bg-teal-700 cursor-pointer capitalize">
                     {[room.Name]}
                   </div>
                 </Link>
