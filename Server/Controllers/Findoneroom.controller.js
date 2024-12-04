@@ -2,11 +2,11 @@ import Rooms from "../Models/Room.model.js";
 
 const findActiveRoom = async (req, res) => {
     const {RoomID} = req.body;
-    console.log(RoomID);
+    // console.log(RoomID);
     const currentroom = await Rooms.findById(RoomID);
     try {
         if (currentroom) {
-            console.log(currentroom);
+            // console.log(currentroom);
             res.json({ currentroom });
         }
         else {

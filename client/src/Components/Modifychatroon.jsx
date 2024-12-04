@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MdModeEditOutline,MdOutlineAdd } from "react-icons/md";
+import ConfirmDelete from "./ConfirmDelete";
 
 export default function ModifyChatRoom() {
   const params = useParams();
   const [currentRoom, setCurrentRoom] = useState(null);
+  const [DeleteRoom , setDelete] = useState(false);
+  const Current = params.RoomName;
 
   useEffect(() => {
-    const Current = params.RoomName;
     console.log("RoomID from params:", Current);
 
     const fetchRoom = async () => {
@@ -56,6 +58,7 @@ export default function ModifyChatRoom() {
   }
 
   return (
+    <>
     <div className="w-full flex justify-center bg-teal-700 min-h-[472px]">
       <div className="w-[500px] flex flex-col gap-4 bg-teal-500 rounded-lg h-fit p-2 mt-4 ">
         <div className="capitalize text-center text-3xl text-white p-3">{currentRoom.Name}</div>
@@ -68,7 +71,7 @@ export default function ModifyChatRoom() {
           <div className=" relative text-xl text-gray-400 text-left">
           <span className="absolute right-14 p-2 text-sm text-black rounded-full bg-teal-700" ><MdOutlineAdd/></span>
           <span className="absolute right-4 p-2 text-sm rounded-full text-black bg-teal-700" ><MdModeEditOutline/></span>
-            Users
+            Members
             </div>
           <ul className="mx-20 my-3 text-lg">
             {currentRoom.users.length > 0 ? (
@@ -80,8 +83,12 @@ export default function ModifyChatRoom() {
             )}
           </ul>
         </div>
-          <button className="bg-red-950 border-none text-white w-full p-2 rounded-md hover:bg-red-700">Delete Room</button>
+          <button className="bg-red-950 border-none text-white w-full p-2 rounded-md hover:bg-red-700" onClick={()=>{setDelete(true)}}>Delete Room</button>
       </div>
     </div>
+      <div className="absolute top-0 left-0">
+        {DeleteRoom && <ConfirmDelete Delete = {{setDelete}} deleteId = {{Current}}/>}
+      </div>
+    </>
   );
 }
